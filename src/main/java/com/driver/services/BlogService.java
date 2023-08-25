@@ -26,21 +26,21 @@ public class BlogService {
         //get user object
         User user = userRepository1.findById(userId).get();
 
-        Blog blog = new Blog();//created new blog and now
+        Blog blog = new Blog(title,content);//created new blog and now
         //set the other details in it
 
-        blog.setTitle(title);
-        blog.setContent(content);
+        //blog.setTitle(title);
+        //blog.setContent(content);
         blog.setPubDate(new Date());
         blog.setUser(user);
 
         //get blog list from user to add this new blog to it
-        List<Blog> blogList = user.getBlogList() ;
+        /*List<Blog> blogList = user.getBlogList() ;
         blogList.add(blog);
+        user.setBlogList(blogList);*/
 
-        user.setBlogList(blogList);
+        user.getBlogList().add(blog);
         userRepository1.save(user);
-
         return blog;
     }
 

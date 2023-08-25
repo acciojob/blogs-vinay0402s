@@ -31,12 +31,13 @@ public class ImageService {
 
         Blog blog = blogRepository2.findById(blogId).get();
         image.setBlog(blog);
+        blog.getImageList().add(image);
 
         //add imagelist to blog
-        //blog.getImageList().add(image); //add image to image list
+         //add image to image list
         //or
-        List<Image> imageList = blog.getImageList();
-        imageList.add(image);
+       // List<Image> imageList = blog.getImageList();
+        //imageList.add(image);
 
         blogRepository2.save(blog);
         return image;
@@ -67,7 +68,5 @@ public class ImageService {
         int height = screenHeight/givenHeight;
 
         return width*height ;
-
-
     }
 }

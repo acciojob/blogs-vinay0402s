@@ -20,16 +20,6 @@ public class Blog {
     private Integer id;
     private String title;
     private String content;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    @CreationTimestamp
     private Date pubDate;
 
     @ManyToOne
@@ -39,14 +29,19 @@ public class Blog {
     @OneToMany(mappedBy = "blog", cascade = CascadeType.ALL)
     private List<Image> imageList = new ArrayList<>();
 
-    public Blog(Integer id, String title, String content) {
-        this.id=id;
+    public Blog(String title, String content) {
         this.title = title;
         this.content = content;
     }
-
-
     public Blog() {
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public User getUser() {

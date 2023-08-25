@@ -14,14 +14,17 @@ public class Image {
     private String description;
     private String dimension;
 
+    @ManyToOne
+    @JoinColumn
+    @JsonIgnore
+    private Blog blog;
+
     public Image() {
     }
 
-    public Image(Integer id, String description, String dimension, Blog blog) {
-        this.id = id;
+    public Image(String description, String dimension) {
         this.description = description;
         this.dimension = dimension;
-        this.blog = blog;
     }
 
     public Integer getId() {
@@ -56,8 +59,4 @@ public class Image {
         this.blog = blog;
     }
 
-    @ManyToOne
-    @JoinColumn
-    @JsonIgnore
-    private Blog blog;
 }

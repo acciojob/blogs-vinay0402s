@@ -17,9 +17,17 @@ public class Blog {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer blogId;
+    private Integer id;
     private String title;
     private String content;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     @CreationTimestamp
     private Date pubDate;
@@ -30,6 +38,16 @@ public class Blog {
 
     @OneToMany(mappedBy = "blog", cascade = CascadeType.ALL)
     private List<Image> imageList = new ArrayList<>();
+
+    public Blog(Integer id, String title, String content) {
+        this.id=id;
+        this.title = title;
+        this.content = content;
+    }
+
+
+    public Blog() {
+    }
 
     public User getUser() {
         return user;
@@ -47,22 +65,12 @@ public class Blog {
         this.imageList = imageList;
     }
 
-    public Blog() {
-    }
-
-    public Blog(Integer blogId, String title, String content, Date pubDate) {
-        this.blogId = blogId;
-        this.title = title;
-        this.content = content;
-        this.pubDate = pubDate;
-    }
-
     public Integer getBlogId() {
-        return blogId;
+        return id;
     }
 
     public void setBlogId(Integer blogId) {
-        this.blogId = blogId;
+        this.id = blogId;
     }
 
     public String getTitle() {

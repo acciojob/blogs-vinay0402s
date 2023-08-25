@@ -1,5 +1,7 @@
 package com.driver.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -11,10 +13,6 @@ public class Image {
     private Integer id ;
     private String description;
     private String dimension;
-
-    @ManyToOne
-    @JoinColumn
-    private Blog blog;
 
     public Image() {
     }
@@ -57,4 +55,9 @@ public class Image {
     public void setBlog(Blog blog) {
         this.blog = blog;
     }
+
+    @ManyToOne
+    @JoinColumn
+    @JsonIgnore
+    private Blog blog;
 }

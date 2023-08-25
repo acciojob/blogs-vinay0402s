@@ -12,35 +12,39 @@ public class User {
 
     @Id//for primary key
     @GeneratedValue(strategy = GenerationType.IDENTITY)  //generate automatic value;
-    private Integer userId;
-
+    private Integer id;
     private String userName;
     private String password;
     private String firstName;
     private String lastName;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Blog> blogList = new ArrayList<>();
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public User(){
 
     }
 
-    public User(Integer userId, String userName, String password, String firstName, String lastName, List<Blog> blogList) {
-        this.userId = userId;
+ /*   public User(Integer userId, String userName, String password, String firstName, String lastName, List<Blog> blogList) {
+        this.id = userId;
         this.userName = userName;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.blogList = blogList;
-    }
+    }*/
 
     public Integer getUserId() {
-        return userId;
+        return id;
     }
 
     public void setUserId(Integer userId) {
-        this.userId = userId;
+        this.id = userId;
     }
 
     public String getUserName() {
@@ -82,4 +86,6 @@ public class User {
     public void setBlogList(List<Blog> blogList) {
         this.blogList = blogList;
     }
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Blog> blogList = new ArrayList<>();
 }

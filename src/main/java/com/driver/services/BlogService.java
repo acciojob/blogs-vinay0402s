@@ -25,7 +25,6 @@ public class BlogService {
         //create a blog at the current time
         //get user object
         User user = userRepository1.findById(userId).get();
-
         Blog blog = new Blog(title,content);//created new blog and now
         //set the other details in it
 
@@ -46,7 +45,7 @@ public class BlogService {
 
     public void deleteBlog(int blogId){
         //delete blog and corresponding images
-       userRepository1.deleteById(blogId);
+       blogRepository1.deleteById(blogId);
 
     }
 }

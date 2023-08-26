@@ -15,9 +15,13 @@ public class UserService {
 
     public User createUser(String username, String password){
 
-        User user = new User(username,password);
-
-        userRepository3.save(user);
+        User user=new User();
+        user.setUsername(username);
+        user.setPassword(password);
+        user.setFirstName("test");
+        user.setLastName("test");
+        user.setBlogList(new ArrayList<>());
+        user =userRepository3.save(user);
         return user;
     }
 
@@ -27,9 +31,8 @@ public class UserService {
 
     public User updateUser(Integer id, String password){
         User user = userRepository3.findById(id).get();
-        user.setUserId(id);
         user.setPassword(password);
-        userRepository3.save(user);
+        user = userRepository3.save(user);
         return user;
     }
 }

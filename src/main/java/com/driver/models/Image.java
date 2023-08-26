@@ -10,28 +10,15 @@ public class Image {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id ;
+    private int id ;
     private String description;
     private String dimension;
 
-    @ManyToOne
-    @JoinColumn
-    @JsonIgnore
-    private Blog blog;
-
-    public Image() {
-    }
-
-    public Image(String description, String dimension) {
-        this.description = description;
-        this.dimension = dimension;
-    }
-
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -58,5 +45,11 @@ public class Image {
     public void setBlog(Blog blog) {
         this.blog = blog;
     }
+
+    @ManyToOne
+    @JoinColumn
+    @JsonIgnore
+    private Blog blog;
+
 
 }

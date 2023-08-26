@@ -7,48 +7,30 @@ import java.util.List;
 
 @Entity
 @Table
-
 public class User {
 
-    @Id//for primary key
-    @GeneratedValue(strategy = GenerationType.IDENTITY)  //generate automatic value;
-    private Integer id;
-    private String userName;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private  int id;
+    private String username;
     private String password;
     private String firstName;
     private String lastName;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Blog> blogList = new ArrayList<>();
-
-    public User(){}
-    public User(String userName, String password) {
-        this.userName = userName;
-        this.password = password;
-        this.firstName = "test";
-        this.lastName = "test";
-    }
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
-    public Integer getUserId() {
-        return id;
+
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserId(Integer userId) {
-        this.id = userId;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -59,7 +41,18 @@ public class User {
         this.password = password;
     }
 
-    public String getFirstName() {
+    public List<Blog> getBlogList()
+    {
+        return blogList;
+    }
+
+    public void setBlogList(List<Blog> blogList)
+    {
+        this.blogList = blogList;
+    }
+
+    public String getFirstName()
+    {
         return firstName;
     }
 
@@ -71,15 +64,11 @@ public class User {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
+    public void setLastName(String lastName)
+    {
         this.lastName = lastName;
     }
 
-    public List<Blog> getBlogList() {
-        return blogList;
-    }
-
-    public void setBlogList(List<Blog> blogList) {
-        this.blogList = blogList;
-    }
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+    private List<Blog>blogList=new ArrayList<>();
 }

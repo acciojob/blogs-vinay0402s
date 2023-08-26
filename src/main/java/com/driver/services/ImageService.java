@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ImageService {
@@ -25,19 +26,39 @@ public class ImageService {
         image.setBlog(blog);
         blog.getImageList().add(image);
         * */
-        Image image = new Image();
+        /*Image image = new Image();
         image.setDimensions(description);
         image.setDimensions(dimensions);
 
         Blog blog = blogRepository2.findById(blogId).get();
         image.setBlog(blog);
-        blog.getImageList().add(image);
+        blog.getImageList().add(image);*/
 
         //add imagelist to blog
          //add image to image list
         //or
        // List<Image> imageList = blog.getImageList();
         //imageList.add(image);
+
+        Optional<Blog> optionalBlog = blogRepository2.findById(blogId);
+        if(!optionalBlog.isPresent()){
+            System.out.println("Image service blog not found");
+            return null;
+        }
+
+        if(description==null || description.equals(""))
+            return null;
+
+        if(dimensions==null || dimensions.equals(""))
+            return null;
+
+        Blog blog = optionalBlog.get();
+        Image image = new Image(description, dimensions);
+        image.setBlog(blog);
+
+        List<Image> blogImageList = blog.getImageList();
+        blogImageList.add(image);
+        blog.setImageList(blogImageList);
 
         blogRepository2.save(blog);
         return image;

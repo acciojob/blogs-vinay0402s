@@ -1,7 +1,7 @@
 package com.driver.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
+import java.lang.String;
 import javax.persistence.*;
 
 @Entity
@@ -13,6 +13,7 @@ public class Image {
     private int id ;
     private String description;
     private String dimension;
+
 
     public int getId() {
         return id;

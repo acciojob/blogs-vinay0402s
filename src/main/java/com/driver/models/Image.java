@@ -14,7 +14,6 @@ public class Image {
     private String description;
     private String dimension;
 
-
     public int getId() {
         return id;
     }
@@ -51,6 +50,4 @@ public class Image {
     @JoinColumn
     @JsonIgnore
     private Blog blog;
-
-
 }

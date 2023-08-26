@@ -12,42 +12,43 @@ public class Image {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id ;
     private String description;
-    private String dimension;
+    private String dimensions;
 
-    public int getId() {
-        return id;
+    @ManyToOne
+    @JoinColumn
+    private Blog blog;
+
+    public Image() {
     }
-
-    public void setId(int id) {
-        this.id = id;
+    public Image(String description, String dimensions) {
+        this.description = description;
+        this.dimensions = dimensions;
     }
-
     public String getDescription() {
         return description;
     }
-
     public void setDescription(String description) {
         this.description = description;
     }
 
-    public String getDimension() {
-        return dimension;
+    public String getDimensions() {
+        return dimensions;
     }
-
-    public void setDimension(String dimension) {
-        this.dimension = dimension;
+    public void setDimensions(String dimensions) {
+        this.dimensions = dimensions;
     }
 
     public Blog getBlog() {
         return blog;
     }
-
     public void setBlog(Blog blog) {
         this.blog = blog;
     }
 
-    @ManyToOne
-    @JoinColumn
-    @JsonIgnore
-    private Blog blog;
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
 }

@@ -26,8 +26,8 @@ public class ImageService {
         blog.getImageList().add(image);
         * */
         Image image = new Image();
-        image.setDimension(description);
-        image.setDimension(dimensions);
+        image.setDimensions(description);
+        image.setDimensions(dimensions);
 
         Blog blog = blogRepository2.findById(blogId).get();
         image.setBlog(blog);
@@ -53,7 +53,7 @@ public class ImageService {
         //get the obj
         Image image = imageRepository2.findById(id).get();
         // get image dimension in form of string
-        String givenDimensions = image.getDimension();
+        String givenDimensions = image.getDimensions();
 
         String [] givenDimension = givenDimensions.split("X"); //10X20X30==>[10,20,30]
         String [] screenDimension = screenDimensions.split("X");
